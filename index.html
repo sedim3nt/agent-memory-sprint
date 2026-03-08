@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agent Memory Sprint — Unified AI Memory in 48 Hours</title>
+  <meta name="description" content="Done-for-you AI memory setup service for founders using multiple AI tools. One shared memory system, installed in 48 hours. $750 pilot pricing — only 5 spots.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Agent Memory Sprint — Unified AI Memory in 48 Hours">
+  <meta property="og:description" content="Stop re-explaining yourself to every AI tool. Get one shared memory system installed in 48 hours. Claude, ChatGPT, Cursor — all pulling from the same source. $750 pilot pricing.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://spirittree.dev/agent-memory-sprint">
+  <meta property="og:image" content="https://spirittree.dev/agent-memory-sprint/og-image.png">
+  <meta property="og:site_name" content="SpiritTree">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Agent Memory Sprint — Unified AI Memory in 48 Hours">
+  <meta name="twitter:description" content="Stop re-explaining yourself to every AI tool. One shared memory system, installed in 48 hours. $750 pilot pricing.">
+  <meta name="twitter:image" content="https://spirittree.dev/agent-memory-sprint/og-image.png">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://spirittree.dev/agent-memory-sprint">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest: {
+              950: '#040c04',
+              900: '#071407',
+              800: '#0c200c',
+              700: '#122e12',
+              600: '#1a3d1a',
+              500: '#245224',
+            },
+            amber: {
+              300: '#fcd34d',
+              400: '#fbbf24',
+              500: '#f59e0b',
+              600: '#d97706',
+              700: '#b45309',
+            },
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+          },
+          animation: {
+            'fade-up': 'fadeUp 0.6s ease-out forwards',
+          },
+          keyframes: {
+            fadeUp: {
+              '0%': { opacity: '0', transform: 'translateY(16px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      background-color: #071407;
+      color: #e7e5e4;
+      font-family: 'Inter', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Subtle dot grid background */
+    .dot-grid {
+      background-image: radial-gradient(circle, rgba(251, 191, 36, 0.08) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    /* Glow effects */
+    .amber-glow {
+      box-shadow: 0 0 40px rgba(251, 191, 36, 0.12), 0 0 80px rgba(251, 191, 36, 0.05);
+    }
+
+    .green-glow {
+      box-shadow: 0 0 30px rgba(36, 82, 36, 0.4);
+    }
+
+    /* Card hover */
+    .card-hover {
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .card-hover:hover {
+      border-color: rgba(251, 191, 36, 0.3);
+      box-shadow: 0 0 20px rgba(251, 191, 36, 0.06);
+    }
+
+    /* CTA button */
+    .btn-primary {
+      background: linear-gradient(135deg, #d97706, #f59e0b);
+      color: #040c04;
+      font-weight: 700;
+      transition: opacity 0.2s ease, transform 0.15s ease;
+    }
+    .btn-primary:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+    }
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+
+    /* Secondary button */
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid rgba(251, 191, 36, 0.4);
+      color: #fbbf24;
+      font-weight: 500;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+    .btn-secondary:hover {
+      background: rgba(251, 191, 36, 0.08);
+      border-color: rgba(251, 191, 36, 0.6);
+    }
+
+    /* Divider */
+    .divider {
+      border-color: rgba(255,255,255,0.06);
+    }
+
+    /* Step connector line */
+    .step-line {
+      background: linear-gradient(to bottom, rgba(251, 191, 36, 0.4), rgba(251, 191, 36, 0.05));
+    }
+
+    /* FAQ accordion */
+    details summary { cursor: pointer; list-style: none; }
+    details summary::-webkit-details-marker { display: none; }
+    details[open] summary .chevron { transform: rotate(180deg); }
+    .chevron { transition: transform 0.2s ease; }
+
+    /* Gradient fade at bottom of hero */
+    .hero-fade {
+      background: linear-gradient(to bottom, transparent, #071407);
+    }
+
+    /* Scrollbar styling */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #071407; }
+    ::-webkit-scrollbar-thumb { background: #1a3d1a; border-radius: 3px; }
+
+    /* Selection */
+    ::selection { background: rgba(251, 191, 36, 0.25); color: #fcd34d; }
+
+    /* Noise texture overlay */
+    .noise::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      opacity: 0.4;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body class="min-h-screen">
+
+  <!-- ============================================================
+       NAV
+  ============================================================ -->
+  <nav class="fixed top-0 left-0 right-0 z-50 px-6 py-4 flex items-center justify-between"
+       style="background: rgba(7,20,7,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.05);">
+    <div class="flex items-center gap-2">
+      <span class="text-amber-400 font-mono text-sm font-medium tracking-wide">SPIRITTREE</span>
+      <span class="text-stone-600 text-xs">✦</span>
+      <span class="text-stone-400 text-sm">Agent Memory Sprint</span>
+    </div>
+    <a href="#book"
+       class="btn-primary text-sm px-5 py-2 rounded-lg hidden sm:inline-flex items-center gap-2">
+      Book Your Sprint
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </nav>
+
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section class="relative min-h-screen flex flex-col justify-center pt-24 pb-16 px-6 dot-grid overflow-hidden">
+
+    <!-- Ambient light blobs -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
+         style="background: radial-gradient(circle, rgba(36,82,36,0.18) 0%, transparent 70%); filter: blur(40px);"></div>
+    <div class="absolute top-1/3 left-1/4 w-[300px] h-[300px] rounded-full pointer-events-none"
+         style="background: radial-gradient(circle, rgba(217,119,6,0.07) 0%, transparent 70%); filter: blur(60px);"></div>
+
+    <div class="relative z-10 max-w-4xl mx-auto text-center">
+
+      <!-- Pill label -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-8 text-xs font-mono font-medium text-amber-400 tracking-wider uppercase"
+           style="border: 1px solid rgba(251,191,36,0.25); background: rgba(251,191,36,0.06);">
+        <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+        5 pilot spots — $750 flat
+      </div>
+
+      <!-- Headline -->
+      <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight text-white mb-6">
+        Stop re-explaining yourself<br class="hidden sm:block">
+        <span class="text-transparent bg-clip-text"
+              style="background-image: linear-gradient(135deg, #fbbf24, #d97706);">
+          to every AI tool.
+        </span>
+      </h1>
+
+      <!-- Subheadline -->
+      <p class="text-lg sm:text-xl md:text-2xl text-stone-300 max-w-2xl mx-auto leading-relaxed mb-4">
+        One shared memory system, installed in 48 hours.
+        Claude, ChatGPT, Cursor — all pulling from the same source.
+      </p>
+      <p class="text-base text-stone-500 max-w-xl mx-auto mb-12">
+        Done-for-you setup. No coding required. You get a working system, not a tutorial.
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#book"
+           class="btn-primary w-full sm:w-auto text-base px-8 py-4 rounded-xl flex items-center justify-center gap-3">
+          Book Your Sprint — $750
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M8 2l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#what-you-get"
+           class="btn-secondary w-full sm:w-auto text-base px-8 py-4 rounded-xl flex items-center justify-center gap-2">
+          See what's included
+        </a>
+      </div>
+
+      <!-- Trust line -->
+      <p class="mt-8 text-stone-600 text-sm font-mono">
+        Pilot pricing ends after first 5 clients. Standard price: $1,250.
+      </p>
+    </div>
+
+    <!-- Fade to content -->
+    <div class="absolute bottom-0 left-0 right-0 h-32 hero-fade pointer-events-none"></div>
+  </section>
+
+  <!-- ============================================================
+       PROBLEM
+  ============================================================ -->
+  <section class="py-20 px-6">
+    <div class="max-w-3xl mx-auto">
+
+      <div class="rounded-2xl p-8 sm:p-12 relative overflow-hidden"
+           style="background: rgba(12,32,12,0.6); border: 1px solid rgba(255,255,255,0.07);">
+
+        <!-- Subtle corner accent -->
+        <div class="absolute top-0 right-0 w-32 h-32 pointer-events-none"
+             style="background: radial-gradient(circle at top right, rgba(251,191,36,0.06), transparent 70%);"></div>
+
+        <p class="text-xs font-mono text-amber-500 uppercase tracking-widest mb-6">The problem</p>
+
+        <div class="space-y-6 text-stone-300 text-lg leading-relaxed">
+          <p>
+            You're already paying for Claude. And ChatGPT. And Cursor.
+            Each one powerful. None of them talking to each other.
+          </p>
+          <p>
+            Every new session, you start over. Re-explaining your goals.
+            Your project history. The decisions you already made last week.
+            Your AI stack is costing you hours per week in <em>just restating context.</em>
+          </p>
+          <p class="text-white font-medium">
+            That's not an AI problem. That's a memory architecture problem.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       WHAT YOU GET
+  ============================================================ -->
+  <section id="what-you-get" class="py-20 px-6">
+    <div class="max-w-4xl mx-auto">
+
+      <div class="mb-12">
+        <p class="text-xs font-mono text-amber-500 uppercase tracking-widest mb-4">What you get</p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white leading-tight">
+          Your "operator brain" — installed,<br class="hidden sm:block">
+          configured, and ready in 48 hours.
+        </h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-4">
+
+        <!-- Deliverable 1 -->
+        <div class="card-hover rounded-xl p-6 flex gap-4"
+             style="background: rgba(12,32,12,0.5); border: 1px solid rgba(255,255,255,0.07);">
+          <div class="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center text-xl"
+               style="background: rgba(36,82,36,0.4);">🧠</div>
+          <div>
+            <h3 class="font-semibold text-white mb-1">90-min intake session</h3>
+            <p class="text-stone-400 text-sm leading-relaxed">We map your current stack, existing context, and what needs to be retrievable. No homework required.</p>
+          </div>
+        </div>
+
+        <!-- Deliverable 2 -->
+        <div class="card-hover rounded-xl p-6 flex gap-4"
+             style="background: rgba(12,32,12,0.5); border: 1px solid rgba(255,255,255,0.07);">
+          <div class="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center text-xl"
+               style="background: rgba(36,82,36,0.4);">🗄️</div>
+          <div>
+            <h3 class="font-semibold text-white mb-1">Shared memory backend</h3>
+            <p class="text-stone-400 text-sm leading-relaxed">A configured memory stack with semantic retrieval — so your AI tools can actually find what you've told them before.</p>
+          </div>
+        </div>
+
+        <!-- Deliverable 3 -->
+        <div class="card-hover rounded-xl p-6 flex gap-4"
+             style="background: rgba(12,32,12,0.5); border: 1px solid rgba(255,255,255,0.07);">
+          <div class="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center text-xl"
+               style="background: rgba(36,82,36,0.4);">📥</div>
+          <div>
+            <h3 class="font-semibold text-white mb-1">Context import</h3>
+            <p class="text-stone-400 text-sm leading-relaxed">We pull in your existing AI profiles, key docs, and notes. You don't start from zero — you start from where you are.</p>
+          </div>
+        </div>
+
+        <!-- Deliverable 4 -->
+        <div class="card-hover rounded-xl p-6 flex gap-4"
+             style="background: rgba(12,32,12,0.5); border: 1px solid rgba(255,255,255,0.07);">
+          <div class="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center text-xl"
+               style="background: rgba(36,82,36,0.4);">📋</div>
+          <div>
+            <h3 class="font-semibold text-white mb-1">5 capture templates</h3>
+            <p class="text-stone-400 text-sm leading-relaxed">Plug-and-play templates for the situations you actually repeat: project context, decisions, research, ops notes, and more.</p>
+          </div>
+        </div>
+
+        <!-- Deliverable 5 -->
+        <div class="card-hover rounded-xl p-6 flex gap-4"
+             style="background: rgba(12,32,12,0.5); border: 1px solid rgba(255,255,255,0.07);">
+          <div class="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center text-xl"
+               style="background: rgba(36,82,36,0.4);">🔄</div>
+          <div>
+            <h3 class="font-semibold text-white mb-1">Weekly review workflow</h3>
+            <p class="text-stone-400 text-sm leading-relaxed">A simple routine to keep your memory system current. Ten minutes a week. Not a second job.</p>
+          </div>
+        </div>
+
+        <!-- Deliverable 6 -->
+        <div class="card-hover rounded-xl p-6 flex gap-4"
+             style="background: rgba(12,32,12,0.5); border: 1px solid rgba(255,255,255,0.07);">
+          <div class="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center text-xl"
+               style="background: rgba(36,82,36,0.4);">📦</div>
+          <div>
+            <h3 class="font-semibold text-white mb-1">Handoff docs + 2 Loom walkthroughs</h3>
+            <p class="text-stone-400 text-sm leading-relaxed">Written documentation and two short screen recordings so you know exactly how everything works and what to do when you forget.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Outcome callout -->
+      <div class="mt-8 rounded-xl p-6 text-center"
+           style="background: linear-gradient(135deg, rgba(36,82,36,0.2), rgba(12,32,12,0.4)); border: 1px solid rgba(36,82,36,0.4);">
+        <p class="text-white font-medium text-lg">
+          By the end of your Sprint: open any supported AI tool and retrieve prior decisions,
+          context, and project history — from one source.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       HOW IT WORKS
+  ============================================================ -->
+  <section class="py-20 px-6" style="background: rgba(4,12,4,0.8);">
+    <div class="max-w-3xl mx-auto">
+
+      <div class="mb-12">
+        <p class="text-xs font-mono text-amber-500 uppercase tracking-widest mb-4">How it works</p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white">Three steps. 48 hours. Done.</h2>
+      </div>
+
+      <div class="space-y-6 relative">
+
+        <!-- Connecting line -->
+        <div class="absolute left-[28px] top-[72px] bottom-[72px] w-px step-line hidden sm:block"></div>
+
+        <!-- Step 1 -->
+        <div class="flex gap-6 relative">
+          <div class="flex-shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center font-bold text-lg text-forest-900 z-10"
+               style="background: linear-gradient(135deg, #fbbf24, #d97706); color: #040c04;">01</div>
+          <div class="flex-1 pt-2">
+            <h3 class="text-xl font-semibold text-white mb-2">Book &amp; pay</h3>
+            <p class="text-stone-400 leading-relaxed">
+              Click the button, complete payment, and you'll get a short intake form and calendar link within a few hours.
+              Setup begins within 24–72 hours of booking.
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="flex gap-6 relative">
+          <div class="flex-shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center font-bold text-lg z-10"
+               style="background: rgba(36,82,36,0.5); border: 1px solid rgba(36,82,36,0.8); color: #fbbf24;">02</div>
+          <div class="flex-1 pt-2">
+            <h3 class="text-xl font-semibold text-white mb-2">90-min intake call</h3>
+            <p class="text-stone-400 leading-relaxed">
+              We map your tools, your context, and what you want to be able to retrieve.
+              No prep needed. I ask the questions.
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="flex gap-6 relative">
+          <div class="flex-shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center font-bold text-lg z-10"
+               style="background: rgba(36,82,36,0.5); border: 1px solid rgba(36,82,36,0.8); color: #fbbf24;">03</div>
+          <div class="flex-1 pt-2">
+            <h3 class="text-xl font-semibold text-white mb-2">48-hour build + handoff</h3>
+            <p class="text-stone-400 leading-relaxed">
+              I set up your memory stack, import your context, configure your templates, and send you everything with documentation and Loom walkthroughs within 48 hours.
+              You open your tools. They remember.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PRICING
+  ============================================================ -->
+  <section id="pricing" class="py-20 px-6">
+    <div class="max-w-4xl mx-auto">
+
+      <div class="mb-12">
+        <p class="text-xs font-mono text-amber-500 uppercase tracking-widest mb-4">Pricing</p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white">Simple. One-time. Flat.</h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-6">
+
+        <!-- Pilot Pricing Card -->
+        <div class="rounded-2xl p-8 relative overflow-hidden amber-glow"
+             style="background: linear-gradient(135deg, rgba(18,46,18,0.8), rgba(12,32,12,0.9)); border: 1px solid rgba(251,191,36,0.3);">
+
+          <!-- Recommended badge -->
+          <div class="absolute top-0 right-0">
+            <div class="text-xs font-mono font-bold text-forest-900 px-4 py-1.5 rounded-bl-xl"
+                 style="background: linear-gradient(135deg, #fbbf24, #d97706); color: #040c04;">
+              PILOT PRICE
+            </div>
+          </div>
+
+          <div class="mb-6">
+            <p class="text-stone-400 text-sm mb-2">Agent Memory Sprint</p>
+            <div class="flex items-end gap-2 mb-1">
+              <span class="text-5xl font-black text-white">$750</span>
+              <span class="text-stone-400 mb-2">one-time</span>
+            </div>
+            <p class="text-amber-400 text-sm font-medium">First 5 clients only.</p>
+          </div>
+
+          <hr class="divider mb-6">
+
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-start gap-3 text-stone-300 text-sm">
+              <svg class="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              90-min strategy + setup intake
+            </li>
+            <li class="flex items-start gap-3 text-stone-300 text-sm">
+              <svg class="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Shared memory backend configured
+            </li>
+            <li class="flex items-start gap-3 text-stone-300 text-sm">
+              <svg class="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Semantic retrieval enabled
+            </li>
+            <li class="flex items-start gap-3 text-stone-300 text-sm">
+              <svg class="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Existing context import (docs + notes)
+            </li>
+            <li class="flex items-start gap-3 text-stone-300 text-sm">
+              <svg class="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              5 plug-and-play capture templates
+            </li>
+            <li class="flex items-start gap-3 text-stone-300 text-sm">
+              <svg class="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Weekly review workflow
+            </li>
+            <li class="flex items-start gap-3 text-stone-300 text-sm">
+              <svg class="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Handoff docs + 2 Loom walkthroughs
+            </li>
+            <li class="flex items-start gap-3 text-stone-300 text-sm">
+              <svg class="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              48-hour delivery
+            </li>
+          </ul>
+
+          <a id="book" href="https://buy.stripe.com/PLACEHOLDER" target="_blank" rel="noopener"
+             class="btn-primary w-full py-4 px-6 rounded-xl text-center font-bold text-base flex items-center justify-center gap-2">
+            Book Your Sprint
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M8 2l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+
+        <!-- Monthly maintenance card -->
+        <div class="rounded-2xl p-8 flex flex-col"
+             style="background: rgba(12,32,12,0.4); border: 1px solid rgba(255,255,255,0.08);">
+
+          <div class="mb-6">
+            <p class="text-stone-400 text-sm mb-2">Monthly Maintenance</p>
+            <div class="flex items-end gap-2 mb-1">
+              <span class="text-5xl font-black text-white">$149</span>
+              <span class="text-stone-400 mb-2">/month</span>
+            </div>
+            <p class="text-stone-500 text-sm">Add after your Sprint. Cancel anytime.</p>
+          </div>
+
+          <hr class="divider mb-6">
+
+          <ul class="space-y-3 mb-8 flex-1">
+            <li class="flex items-start gap-3 text-stone-300 text-sm">
+              <svg class="w-5 h-5 text-stone-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Light system maintenance
+            </li>
+            <li class="flex items-start gap-3 text-stone-300 text-sm">
+              <svg class="w-5 h-5 text-stone-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Monthly optimization pass
+            </li>
+            <li class="flex items-start gap-3 text-stone-300 text-sm">
+              <svg class="w-5 h-5 text-stone-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Template tuning as your needs evolve
+            </li>
+            <li class="flex items-start gap-3 text-stone-300 text-sm">
+              <svg class="w-5 h-5 text-stone-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Stack updates as tools change
+            </li>
+          </ul>
+
+          <div class="rounded-xl p-4 text-center text-stone-500 text-sm"
+               style="border: 1px solid rgba(255,255,255,0.06); background: rgba(7,20,7,0.4);">
+            Available after Sprint completion.<br>
+            Mention it during intake.
+          </div>
+
+          <div class="mt-4 text-center text-stone-600 text-xs">
+            Standard Sprint price after pilot cohort: $1,250
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       WHO THIS IS FOR
+  ============================================================ -->
+  <section class="py-20 px-6" style="background: rgba(4,12,4,0.6);">
+    <div class="max-w-3xl mx-auto">
+
+      <div class="grid sm:grid-cols-2 gap-8">
+
+        <div>
+          <p class="text-xs font-mono text-amber-500 uppercase tracking-widest mb-6">This is for you if</p>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3 text-stone-300">
+              <span class="text-green-400 mt-0.5 flex-shrink-0">✓</span>
+              You use 2+ AI tools weekly (Claude, ChatGPT, Cursor, Gemini, etc.)
+            </li>
+            <li class="flex items-start gap-3 text-stone-300">
+              <span class="text-green-400 mt-0.5 flex-shrink-0">✓</span>
+              You're tired of re-explaining project context at the start of every session
+            </li>
+            <li class="flex items-start gap-3 text-stone-300">
+              <span class="text-green-400 mt-0.5 flex-shrink-0">✓</span>
+              You want a concrete installed system, not a course about memory architecture
+            </li>
+            <li class="flex items-start gap-3 text-stone-300">
+              <span class="text-green-400 mt-0.5 flex-shrink-0">✓</span>
+              You're a solo founder, agency owner, or high-output creator
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="text-xs font-mono text-stone-600 uppercase tracking-widest mb-6">This isn't for you if</p>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3 text-stone-500">
+              <span class="text-stone-600 mt-0.5 flex-shrink-0">✗</span>
+              You're looking for a fully custom software build
+            </li>
+            <li class="flex items-start gap-3 text-stone-500">
+              <span class="text-stone-600 mt-0.5 flex-shrink-0">✗</span>
+              You need enterprise security or compliance architecture in v1
+            </li>
+            <li class="flex items-start gap-3 text-stone-500">
+              <span class="text-stone-600 mt-0.5 flex-shrink-0">✗</span>
+              You want to learn how to build it yourself (this is done-for-you)
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FAQ
+  ============================================================ -->
+  <section class="py-20 px-6">
+    <div class="max-w-3xl mx-auto">
+
+      <div class="mb-12">
+        <p class="text-xs font-mono text-amber-500 uppercase tracking-widest mb-4">FAQ</p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white">Common questions.</h2>
+      </div>
+
+      <div class="space-y-3">
+
+        <!-- FAQ Item -->
+        <details class="group rounded-xl overflow-hidden"
+                 style="background: rgba(12,32,12,0.4); border: 1px solid rgba(255,255,255,0.07);">
+          <summary class="flex items-center justify-between p-6 gap-4 text-white font-medium hover:text-amber-300 transition-colors">
+            Do I need to code?
+            <svg class="chevron w-5 h-5 flex-shrink-0 text-stone-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </summary>
+          <div class="px-6 pb-6 text-stone-400 leading-relaxed border-t"
+               style="border-color: rgba(255,255,255,0.06);">
+            <p class="pt-4">No. This is a done-for-you installation. You show up for the intake call and receive a working system. The only thing I need from you is access to the docs and notes you want imported — and I'll guide you through sharing those safely.</p>
+          </div>
+        </details>
+
+        <details class="group rounded-xl overflow-hidden"
+                 style="background: rgba(12,32,12,0.4); border: 1px solid rgba(255,255,255,0.07);">
+          <summary class="flex items-center justify-between p-6 gap-4 text-white font-medium hover:text-amber-300 transition-colors">
+            Do you need my passwords?
+            <svg class="chevron w-5 h-5 flex-shrink-0 text-stone-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </summary>
+          <div class="px-6 pb-6 text-stone-400 leading-relaxed border-t"
+               style="border-color: rgba(255,255,255,0.06);">
+            <p class="pt-4">No. We use scoped API access and least-privilege setup. You never share credentials in chat. The setup is designed around security from the start — not as an afterthought.</p>
+          </div>
+        </details>
+
+        <details class="group rounded-xl overflow-hidden"
+                 style="background: rgba(12,32,12,0.4); border: 1px solid rgba(255,255,255,0.07);">
+          <summary class="flex items-center justify-between p-6 gap-4 text-white font-medium hover:text-amber-300 transition-colors">
+            What AI tools does this work with?
+            <svg class="chevron w-5 h-5 flex-shrink-0 text-stone-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </summary>
+          <div class="px-6 pb-6 text-stone-400 leading-relaxed border-t"
+               style="border-color: rgba(255,255,255,0.06);">
+            <p class="pt-4">That's the point. The memory layer sits underneath your tools — Claude, ChatGPT, Cursor, and others that support MCP or retrieval integration. During intake, we'll confirm your specific stack and make sure the setup covers it. If a tool isn't supported yet, I'll tell you upfront.</p>
+          </div>
+        </details>
+
+        <details class="group rounded-xl overflow-hidden"
+                 style="background: rgba(12,32,12,0.4); border: 1px solid rgba(255,255,255,0.07);">
+          <summary class="flex items-center justify-between p-6 gap-4 text-white font-medium hover:text-amber-300 transition-colors">
+            How fast can we start?
+            <svg class="chevron w-5 h-5 flex-shrink-0 text-stone-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </summary>
+          <div class="px-6 pb-6 text-stone-400 leading-relaxed border-t"
+               style="border-color: rgba(255,255,255,0.06);">
+            <p class="pt-4">Usually within 24–72 hours of payment. You'll get a calendar link for the intake call immediately after booking. Once we've done the intake, the 48-hour build clock starts.</p>
+          </div>
+        </details>
+
+        <details class="group rounded-xl overflow-hidden"
+                 style="background: rgba(12,32,12,0.4); border: 1px solid rgba(255,255,255,0.07);">
+          <summary class="flex items-center justify-between p-6 gap-4 text-white font-medium hover:text-amber-300 transition-colors">
+            What if I don't love it?
+            <svg class="chevron w-5 h-5 flex-shrink-0 text-stone-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </summary>
+          <div class="px-6 pb-6 text-stone-400 leading-relaxed border-t"
+               style="border-color: rgba(255,255,255,0.06);">
+            <p class="pt-4">This is a pilot run, which means I'm invested in making it work. If something isn't landing, tell me during the first 7 days after handoff and we'll fix it. I'm not running a volume operation — I'm running a quality one.</p>
+          </div>
+        </details>
+
+        <details class="group rounded-xl overflow-hidden"
+                 style="background: rgba(12,32,12,0.4); border: 1px solid rgba(255,255,255,0.07);">
+          <summary class="flex items-center justify-between p-6 gap-4 text-white font-medium hover:text-amber-300 transition-colors">
+            Why $750? Why not more?
+            <svg class="chevron w-5 h-5 flex-shrink-0 text-stone-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </summary>
+          <div class="px-6 pb-6 text-stone-400 leading-relaxed border-t"
+               style="border-color: rgba(255,255,255,0.06);">
+            <p class="pt-4">Because this is a pilot. I'm getting real implementations done, learning what works across different setups, and building proof. After the first 5 clients, the price goes to $1,250. The work is the same either way — you're just getting in early.</p>
+          </div>
+        </details>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FINAL CTA
+  ============================================================ -->
+  <section class="py-24 px-6 relative overflow-hidden dot-grid"
+           style="background: rgba(4,12,4,0.9);">
+
+    <!-- Glow -->
+    <div class="absolute inset-0 pointer-events-none"
+         style="background: radial-gradient(ellipse at center, rgba(36,82,36,0.2) 0%, transparent 70%);"></div>
+
+    <div class="relative z-10 max-w-2xl mx-auto text-center">
+
+      <p class="text-xs font-mono text-amber-500 uppercase tracking-widest mb-6">Still here?</p>
+
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight mb-6">
+        Your AI stack could actually<br>
+        <span class="text-transparent bg-clip-text"
+              style="background-image: linear-gradient(135deg, #fbbf24, #d97706);">
+          remember things.
+        </span>
+      </h2>
+
+      <p class="text-stone-400 text-lg leading-relaxed mb-10">
+        5 pilot slots. $750 flat. 48-hour delivery.<br>
+        After that, it's $1,250 and you're not in the pilot cohort.
+      </p>
+
+      <a href="https://buy.stripe.com/PLACEHOLDER" target="_blank" rel="noopener"
+         class="btn-primary inline-flex items-center gap-3 text-lg px-10 py-5 rounded-xl">
+        Book Your Sprint — $750
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 9h14M9 2l7 7-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+
+      <p class="mt-6 text-stone-600 text-sm">
+        Questions? Email <a href="mailto:hello@spirittree.dev" class="text-stone-500 hover:text-amber-400 transition-colors underline underline-offset-2">hello@spirittree.dev</a>
+      </p>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="py-8 px-6 text-center"
+          style="border-top: 1px solid rgba(255,255,255,0.05);">
+    <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-stone-600 text-sm">
+      <p class="font-mono text-xs tracking-wide">SPIRITTREE · Agent Memory Sprint</p>
+      <p class="text-xs italic opacity-60">Beneath everything. Before everyone. For all beings.</p>
+      <p class="text-xs">© 2025 SpiritTree</p>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Simple intersection observer for fade-in elements
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    // Apply subtle entrance animation to cards
+    document.querySelectorAll('.card-hover').forEach((el, i) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(12px)';
+      el.style.transition = `opacity 0.5s ease ${i * 0.08}s, transform 0.5s ease ${i * 0.08}s`;
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>
