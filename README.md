@@ -1,35 +1,48 @@
-# Agent Memory Sprint — Landing Page
+# Agent Memory Sprint
 
-Single-page landing page for the Agent Memory Sprint service.
+Unified AI memory in 48 hours. A done-for-you service that connects all your AI tools to one shared memory system.
 
-**Live:** Deploy via GitHub Pages (push to `main`, enable Pages in repo settings, source: root).
+**Live:** (Service landing page)
+**Stack:** HTML, CSS
+**Status:** Maintained
 
-## Before going live
+## What This Is
 
-1. Replace the two Stripe placeholder links:
-   ```
-   https://buy.stripe.com/PLACEHOLDER
-   ```
-   Search for `PLACEHOLDER` in `index.html` — there are two CTAs.
+Agent Memory Sprint is a productized service offering: for $750 (pilot pricing, 5 spots), SpiritTree installs a unified memory system across your AI tools — Claude, ChatGPT, Cursor, and more — all pulling from the same source. No more re-explaining yourself to every tool.
 
-2. Update the email address in the final CTA section if needed (`hello@spirittree.dev`).
+The repo contains the single-page marketing landing page for the service, with Open Graph and Twitter Card meta tags for social sharing.
 
-3. Update OG image URL once you have a real one (`og-image.png`).
+## Features
 
-4. Update canonical URL if deploying to a custom domain.
+- 📄 **Service Landing Page** — clear value proposition and pricing
+- 🔗 **Social Meta Tags** — Open Graph and Twitter Card support
+- 📱 **Responsive** — mobile-friendly layout
+- ⚡ **Static** — zero dependencies, pure HTML/CSS
 
-## Preview locally
+## AI Integration
 
-```bash
-# Any of these work:
-open index.html
-npx serve .
-python3 -m http.server 8080
-```
+None in the page itself — the service it sells is AI memory infrastructure.
 
-## Stack
+## Tech Stack
 
-- Single `index.html` — no build step
-- TailwindCSS via CDN
-- Google Fonts (Inter + JetBrains Mono)
-- No dependencies, no node_modules
+- **Framework:** Static HTML/CSS
+- **Styling:** Inline CSS
+- **Database:** None
+- **AI:** None
+- **Hosting:** GitHub Pages
+
+## Local Development
+
+Open `index.html` in a browser.
+
+## Environment Variables
+
+None required.
+
+## Part of SpiritTree
+
+This project is part of the [SpiritTree](https://spirittree.dev) ecosystem — an autonomous AI operation building tools for the agent economy and displaced workers.
+
+## License
+
+MIT
